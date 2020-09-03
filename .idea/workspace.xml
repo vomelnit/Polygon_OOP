@@ -2,8 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3eab81e6-de03-4656-a6c2-abc0b024626f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/GUI.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BooleanOperationsBlockClass.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CheckBlockDRCClass.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DrawSpaceClass.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GUIPolygonCreatorClass.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GateClass.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LayerClass.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LayerCompareAnylizeBlockClass.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/StandartPolygonClass.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,7 +48,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.GUI">
+  <component name="RunManager" selected="Python.main">
     <configuration name="GUI" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Polygon_OOP" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -85,8 +93,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.GUI" />
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.GUI" />
       </list>
     </recent_temporary>
   </component>
@@ -115,5 +123,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/GUIPolygonCreatorClass.py</url>
+          <line>159</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

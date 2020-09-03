@@ -1,9 +1,14 @@
 from tkinter import *
 from tkinter import ttk
-
+from StandartPolygonClass import *
+from LayerClass import *
+from DrawSpaceClass import *
+import re
 
 class GUIPolygonCreator(Tk):
-    def run(self):
+    def run(self,DrawSpaceObj):
+
+        self.__DrawSpace = DrawSpaceObj
         self.title("Polygon Creator")
 
         mainframe = ttk.Frame(self, padding="3 3 12 12")
@@ -11,6 +16,7 @@ class GUIPolygonCreator(Tk):
         self.columnconfigure(0, weight=1)
         self.rowconfigure(0, weight=1)
 
+        layers_array = DrawSpaceObj.getLayersNamesInDrawSpace()
         layers_array = ["Blue","Red"]
         Poly_points = StringVar()
 
@@ -40,9 +46,9 @@ class GUIPolygonCreator(Tk):
 
 
 
-        ComboBoxLayers = ttk.Combobox(mainframe,values=layers_array)
-        ComboBoxLayers.grid(column=2, row=1, sticky=W)
-        ComboBoxLayers.current(0)
+        self.ComboBoxLayers = ttk.Combobox(mainframe,values=layers_array)
+        self.ComboBoxLayers.grid(column=2, row=1, sticky=W)
+        self.ComboBoxLayers.current(0)
 
 
         ttk.Label(mainframe, text="Layer").grid(column=1, row=1, sticky=W)
@@ -56,11 +62,11 @@ class GUIPolygonCreator(Tk):
 
         self.calculate_btn = ttk.Button(mainframe, text="Calculate", command=self.calculate_rectangle_dimensions)
         self.calculate_btn.grid(column=3, row=5, sticky=W)
-        ttk.Button(mainframe, text="Crate polygon", command=self.create_polygon_via_dimensions).grid(column=2, row=5, sticky=E)
+        ttk.Button(mainframe, text="Create rectangle", command=self.create_polygon_via_dimensions).grid(column=2, row=5, sticky=E)
 
         ttk.Label(mainframe, text="Or enter points:").grid(column=1, row=6, columnspan=2,  sticky=W)
-        poly_entry = ttk.Entry(mainframe,  textvariable=Poly_points)
-        poly_entry.grid(column=2, row=6, sticky=(W, E))
+        self.poly_entry = ttk.Entry(mainframe,  textvariable=Poly_points)
+        self.poly_entry.grid(column=2, row=6, sticky=(W, E))
         ttk.Button(mainframe, text="Crate polygon", command=self.create_polygon_via_points).grid(column=1, row=7, sticky=W)
         self.info_label = ttk.Label(mainframe, text="")
         self.info_label.grid(column=1, row=8, columnspan=4,  sticky=W)
@@ -69,14 +75,16 @@ class GUIPolygonCreator(Tk):
         for child in mainframe.winfo_children(): child.grid_configure(padx=5, pady=5)
 
 
-        poly_entry.focus()
+        self.poly_entry.focus()
         self.bind('<Return>', self.calculate_rectangle_dimensions)
         self.bind_all("<Button-1>", lambda e: self.get_current_focus(e))
 
         self.mainloop()
 
     def get_current_focus(self,event):
-        if type(self.focus_get()) == type(self.calculate_btn):
+        #pass
+        print(type(self.focus_get()))
+        if type(self.focus_get()) != type(self.calculate_btn):
             self.info_label['text'] = ""
 
     def calculate_rectangle_dimensions(self):
@@ -88,6 +96,7 @@ class GUIPolygonCreator(Tk):
             self.bottom.set(str(bounds[3]))
             self.width.set(str(size[0]))
             self.height.set(str(size[1]))
+        self.info_label['text'] = "Calculated"
 
 
     def get_bounds_and_size(self):
@@ -136,14 +145,41 @@ class GUIPolygonCreator(Tk):
             return None,None
         return bounds,size
 
+    def getDotsArrayForPolygonFromBounds(self,bounds):
+        return [(bounds[0],bounds[1]), (bounds[0],bounds[3]), (bounds[2],bounds[1]), (bounds[2],bounds[1])]
+
     def create_polygon_via_points(self):
-        pass
+        try:
+            dotsArray = self.getPolygonPointsArrayFromStr(self.poly_entry.get())
+            self.createPolygonUsingPointsArray(dotsArray)
+            self.info_label['text'] = "Polygon via points was created"
+        except Exception:
+            self.info_label['text'] = "Cannot create Polygon using points"
 
     def create_polygon_via_dimensions(self):
-        pass
+        try:
+            bounds, size = self.get_bounds_and_size()
+            dotsArray = self.getDotsArrayForPolygonFromBounds(bounds)
+            self.createPolygonUsingPointsArray(dotsArray)
+            self.info_label['text'] = "Rectangle Polygon was created"
+        except Exception:
+            self.info_label['text'] = "Cannot create Rectangle Polygon"
 
-#GUI = GUIWindow()
+    def createPolygonUsingPointsArray(self,dotsArray):
+        selectedLayerForNewPolyName = self.ComboBoxLayers.get()
+        selectedLayerForNewPolyObj = self.__DrawSpace.getLayerObjByColorName(selectedLayerForNewPolyName)
+        Polygon = StandartPolygon(array_of_dots=dotsArray, Layer=selectedLayerForNewPolyObj)
 
+    def getPolygonPointsArrayFromStr(self,polyStr):
+        pointsStr = polyStr.split(') (')
+        if ('(' != pointsStr[0][0]) or (')' != pointsStr[len(pointsStr) - 1][-1]): raise Exception
+        pointsStr[0] = pointsStr[0][1:]
+        pointsStr[len(pointsStr) - 1] = pointsStr[len(pointsStr) - 1][:-1]
+        dotsArray = []
+        for x in pointsStr:
+            dotsArray.append(x.split(' '))
+        for i in range(len(dotsArray)):
+            dotsArray[i] = (float(dotsArray[i][0]), float(dotsArray[i][1]))
 
-GUI = GUIPolygonCreator()
-GUI.run()
+        return dotsArray
+
