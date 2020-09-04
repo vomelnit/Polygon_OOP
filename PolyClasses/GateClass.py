@@ -1,6 +1,6 @@
 ##@package GateClass
 #Consist of Gate class definition
-from StandartPolygonClass import *
+from PolyClasses.StandartPolygonClass import *
 from shapely.geometry import Polygon
 
 ##This class create Gate objects which inherited from StandartPolygon class

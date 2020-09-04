@@ -1,7 +1,7 @@
 ##@package BooleanOperationsBlockClass
 #Consist of BooleanOperationsBlock class definition
-from StandartPolygonClass import *
-from LayerClass import *
+from PolyClasses.StandartPolygonClass import *
+from PolyClasses.LayerClass import *
 
 ##This class create BooleanOperationsBlock objects
 #

@@ -2,9 +2,9 @@
 #Consist of GUIPolygonCreator class definition
 from tkinter import *
 from tkinter import ttk
-from StandartPolygonClass import *
-from LayerClass import *
-from DrawSpaceClass import *
+from PolyClasses.StandartPolygonClass import *
+from PolyClasses.LayerClass import *
+from PolyClasses.DrawSpaceClass import *
 import re
 
 ##This class create GUIPolygonCreator objects

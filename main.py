@@ -1,11 +1,10 @@
 from shapely.geometry import Polygon
-from StandartPolygonClass import *
-from DrawSpaceClass import *
-from LayerClass import *
-from BooleanOperationsBlockClass import *
-from GUIPolygonCreatorClass import *
-from CheckBlockDRCClass import *
-from LayerCompareAnylizeBlockClass import *
+from PolyClasses.DrawSpaceClass import *
+from PolyClasses.StandartPolygonClass import *
+from PolyClasses.BooleanOperationsBlockClass import *
+from PolyClasses.GUIPolygonCreatorClass import *
+from PolyClasses.CheckBlockDRCClass import *
+from PolyClasses.LayerCompareAnylizeBlockClass import *
 
 
 ##Demonstrate Task 1 execution

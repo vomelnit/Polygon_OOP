@@ -1,8 +1,8 @@
 ##@package LayerCompareAnylizeBlockClass
 #Consist of LayerCompareAnylizeBlock class definition
-from BooleanOperationsBlockClass import *
-from LayerClass import *
-from GateClass import *
+from PolyClasses.BooleanOperationsBlockClass import *
+from PolyClasses.LayerClass import *
+from PolyClasses.GateClass import *
 
 
 ##This class create LayerCompareAnylizeBlock objects
