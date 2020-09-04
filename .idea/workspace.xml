@@ -5,10 +5,12 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BooleanOperationsBlockClass.py" beforeDir="false" afterPath="$PROJECT_DIR$/BooleanOperationsBlockClass.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CheckBlockDRCClass.py" beforeDir="false" afterPath="$PROJECT_DIR$/CheckBlockDRCClass.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DrawSpaceClass.py" beforeDir="false" afterPath="$PROJECT_DIR$/DrawSpaceClass.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GUIPolygonCreatorClass.py" beforeDir="false" afterPath="$PROJECT_DIR$/GUIPolygonCreatorClass.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GateClass.py" beforeDir="false" afterPath="$PROJECT_DIR$/GateClass.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LayerClass.py" beforeDir="false" afterPath="$PROJECT_DIR$/LayerClass.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LayerCompareAnylizeBlockClass.py" beforeDir="false" afterPath="$PROJECT_DIR$/LayerCompareAnylizeBlockClass.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StandartPolygonClass.py" beforeDir="false" afterPath="$PROJECT_DIR$/StandartPolygonClass.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />

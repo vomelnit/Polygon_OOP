@@ -7,6 +7,13 @@ from GUIPolygonCreatorClass import *
 from CheckBlockDRCClass import *
 from LayerCompareAnylizeBlockClass import *
 
+
+##Demonstrate Task 1 execution
+#   @param self The object pointer
+#   @param polygon1 StandardPolygon object
+#   @param polygon2 StandardPolygon object
+#   @param DrawSpace DrawSpace object
+#   @return array of StandardPolygon objects
 def Task1(polygon1,polygon2,DrawSpace):
     BooleanOperationsBlockObj = BooleanOperationsBlock()
     polyANDresultArr = BooleanOperationsBlockObj.get_resulting_polygon_arr_from_operation_AND(polygon1, polygon2, DrawSpace)
@@ -27,6 +34,13 @@ def Task1(polygon1,polygon2,DrawSpace):
                 finalPolyArr.append(resultingPolygon)
     return finalPolyArr
 
+##Demonstrate Task 2 execution
+#   @param self The object pointer
+#   @param poly1 StandardPolygon object
+#   @param poly2 StandardPolygon object
+#   @param widthCheck float
+#   @param SpacingCheck float
+#   @param EnclosureCheck float
 def Task2(poly1,poly2,widthCheck,SpacingCheck,EnclosureCheck):
     CheckBlockDRCObj = CheckBlockDRC()
     print("Check if polygon's width (x axis) less that <widthCheck> value:")
@@ -39,6 +53,11 @@ def Task2(poly1,poly2,widthCheck,SpacingCheck,EnclosureCheck):
     print(CheckBlockDRCObj.isPolysEnclosureByOneSidesLessThanCheckValue(PolygonObj1=poly1,PolygonObj2=poly2,enclosure_size=EnclosureCheck,checkSide="Bottom"))
 
 
+##Demonstrate Task 3 execution
+#   @param self The object pointer
+#   @param Layer1 Layer object
+#   @param Layer2 Layer object
+#   @param gateWidth float
 def Task3(Layer1,Layer2,gateWidth):
     LayerCompareAnylizeBlockObj = LayerCompareAnylizeBlock()
     gateArray = LayerCompareAnylizeBlockObj.get_gates_arr_with_width_check(Layer1,Layer2,gateWidth)
@@ -46,9 +65,12 @@ def Task3(Layer1,Layer2,gateWidth):
     for x in gateArray:
         print(x.get_array_of_dots())
 
+##Demonstrate Task 4 execution
+#   @param self The object pointer
+#   @param DrawSpace DrawSpace object
 def Task4(DrawSpace):
     GUI = GUIPolygonCreator()
-    GUI.run(Draw)
+    GUI.run(DrawSpace)
 
 if __name__ == "__main__":
 

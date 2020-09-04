@@ -1,3 +1,5 @@
+##@package GUIPolygonCreatorClass
+#Consist of GUIPolygonCreator class definition
 from tkinter import *
 from tkinter import ttk
 from StandartPolygonClass import *
@@ -5,7 +7,14 @@ from LayerClass import *
 from DrawSpaceClass import *
 import re
 
+##This class create GUIPolygonCreator objects
+#
+# It realize GUI interface for polygons creation
 class GUIPolygonCreator(Tk):
+
+    ##  Set main setting of buttons/entries/combobox and etc.
+    #   @param self The object pointer
+    #   @param DrawSpaceObj DrawSpace object
     def run(self,DrawSpaceObj):
 
         self.__DrawSpace = DrawSpaceObj
@@ -80,12 +89,17 @@ class GUIPolygonCreator(Tk):
 
         self.mainloop()
 
+    ##  Set information label empty by focusind not on buttons
+    #   @param self The object pointer
+    #   @param event
     def get_current_focus(self,event):
-        #pass
+        pass
         #print(type(self.focus_get())
-        if type(self.focus_get()) != type(self.calculate_btn):
-            self.info_label['text'] = ""
+        # if type(self.focus_get()) != type(self.calculate_btn):
+        #     self.info_label['text'] = ""
 
+    ##  Set entries that responsible for rectangle dimentions to full calculated state
+    #   @param self The object pointer
     def calculate_rectangle_dimensions(self):
         bounds,size = self.get_bounds_and_size()
         if bounds is not None and size is not None:
@@ -97,7 +111,8 @@ class GUIPolygonCreator(Tk):
             self.height.set(str(size[1]))
         self.info_label['text'] = "Calculated"
 
-
+    ##  Check entries that responsible for rectangle dimentions for information fullness and calculate empty fields
+    #   @param self The object pointer
     def get_bounds_and_size(self):
         # must be:  bounds = [left,top,right,bottom]
         bounds = [None, None, None, None]
@@ -144,9 +159,14 @@ class GUIPolygonCreator(Tk):
             return None,None
         return bounds,size
 
+    ##  Return array of rectangle's points from bounds
+    #   @param self The object pointer
+    #   @param bounds array of float (4 elements)
     def getDotsArrayForPolygonFromBounds(self,bounds):
         return [(bounds[0],bounds[1]), (bounds[0],bounds[3]), (bounds[2],bounds[1]), (bounds[2],bounds[1])]
 
+    ##  Create StandardPolygon object using entry interface that consist of polygon's points
+    #   @param self The object pointer
     def create_polygon_via_points(self):
         try:
             dotsArray = self.getPolygonPointsArrayFromStr(self.poly_entry.get())
@@ -156,6 +176,8 @@ class GUIPolygonCreator(Tk):
         except Exception:
             self.info_label['text'] = "Cannot create Polygon using points"
 
+    ##  Create StandardPolygon object using entries of bounds and sizes
+    #   @param self The object pointer
     def create_polygon_via_dimensions(self):
         try:
             bounds, size = self.get_bounds_and_size()
@@ -166,11 +188,17 @@ class GUIPolygonCreator(Tk):
         except Exception:
             self.info_label['text'] = "Cannot create Rectangle Polygon"
 
+    ##  Create StandardPolygon objects from array of points
+    #   @param self The object pointer
     def createPolygonUsingPointsArray(self,dotsArray):
         selectedLayerForNewPolyName = self.ComboBoxLayers.get()
         selectedLayerForNewPolyObj = self.__DrawSpace.getLayerObjByColorName(selectedLayerForNewPolyName)
         Polygon = StandartPolygon(array_of_dots=dotsArray, Layer=selectedLayerForNewPolyObj)
 
+    ##  Return array of points from entry string
+    #   @param self The object pointer
+    #   @param polyStr string
+    #   @return array of float (x,y)
     def getPolygonPointsArrayFromStr(self,polyStr):
         pointsStr = polyStr.split(') (')
         if ('(' != pointsStr[0][0]) or (')' != pointsStr[len(pointsStr) - 1][-1]): raise Exception
