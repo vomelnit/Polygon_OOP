@@ -20,7 +20,9 @@ class Layer:
 
     def __getFreeLayerName(self):
         for x in Layer.__layerNamesAndPrioritiesDict:
-            if Layer.__layerNamesAndPrioritiesDict[x] is None: return x
+            if Layer.__layerNamesAndPrioritiesDict[x] is None:
+                Layer.__layerNamesAndPrioritiesDict[x] = "Taken"
+                return x
         return None
 
     def getColorName(self):

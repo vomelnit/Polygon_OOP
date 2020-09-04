@@ -17,7 +17,6 @@ class GUIPolygonCreator(Tk):
         self.rowconfigure(0, weight=1)
 
         layers_array = DrawSpaceObj.getLayersNamesInDrawSpace()
-        layers_array = ["Blue","Red"]
         Poly_points = StringVar()
 
         self.left = StringVar()
@@ -83,7 +82,7 @@ class GUIPolygonCreator(Tk):
 
     def get_current_focus(self,event):
         #pass
-        print(type(self.focus_get()))
+        #print(type(self.focus_get())
         if type(self.focus_get()) != type(self.calculate_btn):
             self.info_label['text'] = ""
 
@@ -153,6 +152,7 @@ class GUIPolygonCreator(Tk):
             dotsArray = self.getPolygonPointsArrayFromStr(self.poly_entry.get())
             self.createPolygonUsingPointsArray(dotsArray)
             self.info_label['text'] = "Polygon via points was created"
+            print("Created polygon on {0} Layer with points:\n{1}".format(self.ComboBoxLayers.get(), dotsArray))
         except Exception:
             self.info_label['text'] = "Cannot create Polygon using points"
 
@@ -162,6 +162,7 @@ class GUIPolygonCreator(Tk):
             dotsArray = self.getDotsArrayForPolygonFromBounds(bounds)
             self.createPolygonUsingPointsArray(dotsArray)
             self.info_label['text'] = "Rectangle Polygon was created"
+            print("Rectangle polygon on {0} Layer with bounds:\n{1}".format(self.ComboBoxLayers.get(),dotsArray))
         except Exception:
             self.info_label['text'] = "Cannot create Rectangle Polygon"
 

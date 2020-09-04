@@ -1,4 +1,5 @@
 from StandartPolygonClass import *
+from shapely.geometry import Polygon
 
 class Gate(StandartPolygon):
     def __init__(self,array_of_dots,Layer = None,FirstDerivativeLayer = None,SecondDerivativeLayer = None):
